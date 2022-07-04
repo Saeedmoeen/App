@@ -2,15 +2,20 @@ package com.example.app.activities
 
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsetsController
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.app.R
-import com.example.app.databinding.ActivityMainBinding
+import com.example.app.api.RetrofitClient
 import com.example.app.databinding.ActivitySignUpBinding
+import com.example.app.models.DefaultResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
     @Suppress("DEPRECATION")
@@ -33,5 +38,46 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivitySignUpBinding =
             DataBindingUtil.setContentView(this@SignUpActivity, R.layout.activity_sign_up)
+
+        binding.btnSignUp
+            .setOnClickListener {
+
+                val username = binding.etUsername.text.toString().trim()
+                val password = binding.etPw.text.toString().trim()
+                val fName = binding.etFName.text.toString().trim()
+                val lName = binding.etLName.text.toString().trim()
+                val email = binding.etEmail.text.toString().trim()
+
+                if (username.isEmpty()) {
+                    binding.etUsername.error = "Password required"
+                    binding.etUsername.requestFocus()
+                    return@setOnClickListener
+                }
+
+                if (password.isEmpty()) {
+                    binding.etPw.error = "Password required"
+                    binding.etPw.requestFocus()
+                    return@setOnClickListener
+                }
+
+                RetrofitClient.instance.createUser(fName, lName, email, username, password)
+                    .enqueue(object : Callback<DefaultResponse> {
+                        override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        }
+
+                        override fun onResponse(
+                            call: Call<DefaultResponse>,
+                            response: Response<DefaultResponse>
+                        ) {
+                            Toast.makeText(
+                                applicationContext,
+                                response.body()?.message,
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                    })
+            }
     }
 }

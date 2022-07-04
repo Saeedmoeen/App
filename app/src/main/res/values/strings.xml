@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">App</string>
+    <string name="market">market</string>
+    <string name="welcome_to_market">خوش آمدید به مارکت</string>
+    <string name="signup">ثبت نام</string>
+    <string name="do_you_have_acc">قبلا عضو شده اید؟</string>
+    <string name="sign_in">ورود</string>
+    <string name="username">نام کاربری</string>
+    <string name="password">کلمه عبور</string>
+    <string name="remember_me">من را به یاد داشته باش</string>
+    <string name="forgot_pw">کلمه عبور را فراموش کرده ام</string>
+    <string name="dont_have_acc">حساب کاربری ندارید؟</string>
+    <string name="create_acc">ساخت اکانت</string>
+    <string name="email">ایمیل</string>
+    <string name="r_password">تکرار کلمه عبور</string>
+    <string name="role">شرایط و قوانین</string>
+    <string name="r_role">را قبول دارم</string>
+    <string name="password_recovery">بازیابی کلمه عبور</string>
+    <string name="info_1">آدرس ایمیلی را که هنگام عضویت استفاده کردید وارد کنید و ما دستورالعمل‌هایی را برای بازنشانی رمز عبورتان برای شما ارسال می‌کنیم.</string>
+    <string name="info_2">به دلایل امنیتی، ما رمز عبور شما را ذخیره نمی کنیم. پس مطمئن باشید که ما هرگز رمز عبور شما را از طریق ایمیل ارسال نمی کنیم.</string>
+    <string name="info_3">شما میتوانید از طریق لینک ارسال شده به ایمیل شما کلمه خود را تغییر دهید.</string>
+    <string name="submit">ارسال</string>
+    <string name="change_password">تغییر کلمه عبور</string>
+    <string name="name">نام کاربر</string>
+    <string name="last_name">نام خانوادگی</string>
 </resources>

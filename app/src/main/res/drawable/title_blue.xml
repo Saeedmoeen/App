@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/vector_blue"/>
+    <item android:drawable="@drawable/three_shape_logo"
+        android:gravity="center"
+        />
+    <item android:drawable="@drawable/second_text_logo"
+        android:gravity="center"/>
+
+</layer-list>

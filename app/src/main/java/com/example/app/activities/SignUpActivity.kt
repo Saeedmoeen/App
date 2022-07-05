@@ -3,6 +3,7 @@ package com.example.app.activities
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowInsetsController
 import android.view.WindowManager
@@ -13,10 +14,13 @@ import com.example.app.R
 import com.example.app.api.RetrofitClient
 import com.example.app.databinding.ActivitySignUpBinding
 import com.example.app.models.DefaultResponse
+import com.example.app.models.UserResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
+private const val TAG = "SignupActivity"
 class SignUpActivity : AppCompatActivity() {
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,20 +65,16 @@ class SignUpActivity : AppCompatActivity() {
                 }
 
                 RetrofitClient.instance.createUser(fName, lName, email, username, password)
-                    .enqueue(object : Callback<DefaultResponse> {
-                        override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                    .enqueue(object : Callback<UserResponse> {
+                        override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                         }
 
                         override fun onResponse(
-                            call: Call<DefaultResponse>,
-                            response: Response<DefaultResponse>
+                            call: Call<UserResponse>,
+                            response: Response<UserResponse>
                         ) {
-                            Toast.makeText(
-                                applicationContext,
-                                response.body()?.message,
-                                Toast.LENGTH_LONG
-                            ).show()
+                            Toast.makeText(applicationContext, response.message(), Toast.LENGTH_LONG).show()
                         }
 
                     })

@@ -3,7 +3,6 @@ package com.example.app.activities
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowInsetsController
 import android.view.WindowManager
@@ -11,16 +10,20 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.app.R
-import com.example.app.api.RetrofitClient
+import com.example.app.api.Api
 import com.example.app.databinding.ActivitySignUpBinding
-import com.example.app.models.DefaultResponse
 import com.example.app.models.UserResponse
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-
+private const val BASE_URL = "http://194.62.43.26:1337/api/"
 private const val TAG = "SignupActivity"
+
 class SignUpActivity : AppCompatActivity() {
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,20 +67,39 @@ class SignUpActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                RetrofitClient.instance.createUser(fName, lName, email, username, password)
-                    .enqueue(object : Callback<UserResponse> {
-                        override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                        }
+                fun getClient(): Retrofit? {
+                    val interceptor = HttpLoggingInterceptor()
+                    interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+                    val client: OkHttpClient = OkHttpClient.Builder()
+                        .addInterceptor(interceptor)
+                        .retryOnConnectionFailure(true)
+                        .build()
+                    return Retrofit.Builder()
+                        .baseUrl("http://194.62.43.26:1337/api/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .client(client)
+                        .build()
+                }
 
-                        override fun onResponse(
-                            call: Call<UserResponse>,
-                            response: Response<UserResponse>
-                        ) {
-                            Toast.makeText(applicationContext, response.message(), Toast.LENGTH_LONG).show()
-                        }
+                val call = getClient()!!.create(Api::class.java)
+                    .createUser(fName, lName, email, username, password)
+                call.enqueue(object : Callback<UserResponse> {
+                    override fun onResponse(
+                        call: Call<UserResponse>,
+                        response: Response<UserResponse>
+                    ) {
+                        Toast.makeText(
+                            this@SignUpActivity,
+                            response.code().toString() + " " + response.body().toString(),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
 
-                    })
+                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                        Toast.makeText(this@SignUpActivity, t.localizedMessage!!.toString(), Toast.LENGTH_LONG).show()
+                    }
+                })
+
             }
     }
 }

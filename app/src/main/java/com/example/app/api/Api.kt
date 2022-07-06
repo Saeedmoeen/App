@@ -1,13 +1,14 @@
 package com.example.app.api
 
-import com.example.app.models.DefaultResponse
 import com.example.app.models.UserResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface Api {
+    @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("users/signup")
     @FormUrlEncoded
     fun createUser(

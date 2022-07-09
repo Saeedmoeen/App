@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.app.R
 import com.example.app.api.Api
-import com.example.app.api.RetrofitInstance
+import com.example.app.api.RetrofitClient
 import com.example.app.databinding.ActivitySignUpBinding
 import com.example.app.models.User
 import retrofit2.Call
@@ -77,9 +77,9 @@ class SignUpActivity : AppCompatActivity() {
         username: String,
         password: String
     ) {
-        val retIn = RetrofitInstance.getRetrofitInstance().create(Api::class.java)
+        val retrofit = RetrofitClient.getRetrofitInstance().create(Api::class.java)
 
-        retIn.createUser(fName, lName, email, username, password).enqueue(object : Callback<User> {
+        retrofit.createUser(fName, lName, email, username, password).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.code() == 201) {
                     alertDialog("اکانت شما با موفیت ساخته شد")

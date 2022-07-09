@@ -26,4 +26,11 @@
     <string name="ok">باشه</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">صحفه اصلی</string>
+    <string name="name_item">کیک روکش شکلاتی با تزیین برنجک ایسترم</string>
+    <string name="item_code">کد محصول :</string>
+    <string name="quantity">تعداد :</string>
+    <string name="Price">قیمت :</string>
+    <string name="Available">موجود</string>
+    <string name="category">دسته بندی :</string>
 </resources>

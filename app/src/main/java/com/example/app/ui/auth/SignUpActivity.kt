@@ -1,4 +1,4 @@
-package com.example.app.activities
+package com.example.app.ui.auth
 
 import android.graphics.Color
 import android.os.Build
@@ -6,23 +6,22 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsetsController
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.app.R
 import com.example.app.api.Api
+import com.example.app.api.RetrofitInstance
 import com.example.app.databinding.ActivitySignUpBinding
-import com.example.app.models.UserResponse
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import com.example.app.models.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "http://194.62.43.26:1337/api/"
-private const val TAG = "SignupActivity"
+internal const val BASE_URL = "http://194.62.43.26:1337/api/"
 
 class SignUpActivity : AppCompatActivity() {
     @Suppress("DEPRECATION")
@@ -67,39 +66,54 @@ class SignUpActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                fun getClient(): Retrofit? {
-                    val interceptor = HttpLoggingInterceptor()
-                    interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-                    val client: OkHttpClient = OkHttpClient.Builder()
-                        .addInterceptor(interceptor)
-                        .retryOnConnectionFailure(true)
-                        .build()
-                    return Retrofit.Builder()
-                        .baseUrl("http://194.62.43.26:1337/api/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .client(client)
-                        .build()
-                }
-
-                val call = getClient()!!.create(Api::class.java)
-                    .createUser(fName, lName, email, username, password)
-                call.enqueue(object : Callback<UserResponse> {
-                    override fun onResponse(
-                        call: Call<UserResponse>,
-                        response: Response<UserResponse>
-                    ) {
-                        Toast.makeText(
-                            this@SignUpActivity,
-                            response.code().toString() + " " + response.body().toString(),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-
-                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                        Toast.makeText(this@SignUpActivity, t.localizedMessage!!.toString(), Toast.LENGTH_LONG).show()
-                    }
-                })
-
+                signUp(fName, lName, email, username, password)
             }
+    }
+
+    private fun signUp(
+        fName: String,
+        lName: String,
+        email: String,
+        username: String,
+        password: String
+    ) {
+        val retIn = RetrofitInstance.getRetrofitInstance().create(Api::class.java)
+
+        retIn.createUser(fName, lName, email, username, password).enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.code() == 201) {
+                    alertDialog("اکانت شما با موفیت ساخته شد")
+                } else if (response.code() == 403) {
+                    alertDialog("ارتباط شما با سرور برقرار نمیباشد")
+                } else if (response.code() == 400) {
+                    alertDialog("این اکانت قبلا ساخته شده")
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Toast.makeText(
+                    this@SignUpActivity,
+                    t.localizedMessage!!.toString(),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
+    }
+
+    private fun alertDialog(description: String) {
+        val builder = AlertDialog.Builder(this@SignUpActivity, R.style.CustomAlertDialog)
+            .create()
+        val view = layoutInflater.inflate(R.layout.alert_dialog, null)
+        val button = view.findViewById<Button>(R.id.dialogDismiss_button)
+        builder.setView(view)
+        val tvDescription = view.findViewById<TextView>(R.id.tvDescription)
+        val tvTitle = view.findViewById<TextView>(R.id.tvTitle)
+        tvDescription.text = description
+        tvTitle.text = "پیام"
+        button.setOnClickListener {
+            builder.dismiss()
+        }
+        builder.setCanceledOnTouchOutside(false)
+        builder.show()
     }
 }

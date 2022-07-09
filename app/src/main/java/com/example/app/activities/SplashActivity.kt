@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.app.R
+import com.example.app.ui.auth.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

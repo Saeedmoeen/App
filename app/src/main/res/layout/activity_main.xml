@@ -11,8 +11,8 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary_color"
-        tools:context=".activities.MainActivity">
+        android:background="@color/primarycolor"
+        tools:context=".ui.auth.MainActivity">
 
 
         <View
@@ -58,7 +58,7 @@
             android:fontFamily="@font/shabnam"
             android:text="@string/signup"
             android:textAlignment="center"
-            android:textColor="@color/primary_color"
+            android:textColor="@color/primarycolor"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

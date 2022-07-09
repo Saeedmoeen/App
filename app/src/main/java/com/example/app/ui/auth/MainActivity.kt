@@ -1,5 +1,6 @@
-package com.example.app.activities
+package com.example.app.ui.auth
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +13,7 @@ import com.example.app.R
 import com.example.app.databinding.ActivityMainBinding
 import com.example.app.databinding.ActivitySignInBinding
 
-class SignInActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         window.apply {
@@ -22,16 +23,28 @@ class SignInActivity : AppCompatActivity() {
             statusBarColor = Color.TRANSPARENT
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    this@SignInActivity.window.decorView.windowInsetsController
+                    this@MainActivity.window.decorView.windowInsetsController
                         ?.setSystemBarsAppearance(
-                            0,
+                            WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
                             WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
                         )
                 }
             }
         }
         super.onCreate(savedInstanceState)
-        val binding: ActivitySignInBinding =
-            DataBindingUtil.setContentView(this@SignInActivity, R.layout.activity_sign_in)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this@MainActivity, R.layout.activity_main)
+
+        binding.btnSignUp.setOnClickListener {
+            val intent = Intent(this@MainActivity, SignUpActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.tvSignIn.setOnClickListener {
+            val intent = Intent(this@MainActivity, SignInActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

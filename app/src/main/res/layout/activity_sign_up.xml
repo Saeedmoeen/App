@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.SignUpActivity">
+        tools:context=".ui.auth.SignUpActivity">
 
         <View
             android:id="@+id/view"
@@ -42,7 +42,7 @@
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/shabnam_bold"
                 android:text="@string/create_acc"
-                android:textColor="@color/primary_color"
+                android:textColor="@color/primarycolor"
                 android:textSize="20sp" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -161,7 +161,7 @@
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/shabnam"
                 android:text="@string/sign_in"
-                android:textColor="@color/primary_color"
+                android:textColor="@color/primarycolor"
                 android:textSize="15sp"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>

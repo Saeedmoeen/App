@@ -33,6 +33,18 @@
         <item name="android:windowBackground">@drawable/rounded_corner</item>
     </style>
 
+    <style name="BottomNavigationView">
+        <item name="android:background">@drawable/nav_menu_bottom</item>
+        <item name="itemIconTint">@color/color_nav_bottom</item>
+        <item name="itemRippleColor">@color/color_nav_bottom_ripple</item>
+        <item name="itemTextColor">@color/white</item>
+    </style>
+
+    <style name="BottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/shabnam</item>
+    </style>
+
+
 
 
 </resources>

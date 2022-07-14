@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.HomeActivity">
+        tools:context=".ui.search.SearchActivity">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearLayoutCompat2"
@@ -61,7 +61,7 @@
                 <View
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:background="@drawable/menu" />
+                    android:background="@drawable/arrow_right" />
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -91,13 +91,15 @@
                 android:visibility="gone" />
 
 
-            <TextView
-                android:id="@+id/tvSearch"
+            <EditText
+                android:id="@+id/et_search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:hint="@string/search"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
                 android:lines="1"
                 android:gravity="start"
                 android:textDirection="rtl"
@@ -119,65 +121,21 @@
 
         </LinearLayout>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearLayoutCompat4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearLayoutCompat3">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingEnd="15dp"
-                android:paddingStart="15dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="10dp"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/shabnam_bold"
-                android:text="@string/products"/>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:padding="8dp"
+            android:layout_marginTop="10dp"
             android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4"
-            tools:listitem="@layout/list_item" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3"
+            tools:listitem="@layout/list_search" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="380dp"
-            android:layout_height="76dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center_horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                style="@style/BottomNavigationView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:labelVisibilityMode="selected"
-                app:itemIconSize="36dp"
-                app:elevation="20dp"
-                android:layout_gravity="center_horizontal"
-                app:itemTextAppearanceActive="@style/BottomNavigationViewTextStyle"
-                app:itemTextAppearanceInactive="@style/BottomNavigationViewTextStyle"
-                app:menu="@menu/nav_menu" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

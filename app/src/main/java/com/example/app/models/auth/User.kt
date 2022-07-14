@@ -1,4 +1,4 @@
-package com.example.app.models
+package com.example.app.models.auth
 
 data class User(
     val email: String,

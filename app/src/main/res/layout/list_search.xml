@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tvNumber"
+                    android:id="@+id/tvCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
@@ -77,120 +77,36 @@
 
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/l_quantity"
+                android:id="@+id/l_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="vertical"
+                android:gravity="end"
+                android:paddingBottom="10dp"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/l_Number">
 
                 <TextView
-                    android:id="@+id/tvQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
                     android:fontFamily="@font/shabnam"
-                    android:text="100"
+                    android:text="@string/descritpion"
                     android:textColor="#212121"
                     android:textSize="11sp" />
-
                 <TextView
+                    android:id="@+id/tvInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/shabnam"
-                    android:text="@string/quantity"
+                    android:text="@string/info_4"
                     android:textColor="#212121"
                     android:textSize="11sp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/l_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/l_quantity">
 
-                <TextView
-                    android:id="@+id/tvPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:fontFamily="@font/shabnam"
-                    android:text="8500 تومان"
-                    android:textColor="#212121"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/shabnam"
-                    android:text="@string/Price"
-                    android:textColor="#212121"
-                    android:textSize="11sp" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/l_available"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/l_price">
-
-
-                <View
-                    android:id="@+id/v_available"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/active" />
-
-                <TextView
-                    android:id="@+id/tvAvailable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/shabnam"
-                    android:text="@string/Available"
-                    android:textColor="#212121"
-                    android:textSize="11sp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/l_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/l_available">
-
-                <TextView
-                    android:id="@+id/tvCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:fontFamily="@font/shabnam"
-                    android:text="کیک و کلوچه"
-                    android:textColor="#212121"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/shabnam"
-                    android:text="@string/category"
-                    android:textColor="#212121"
-                    android:textSize="11sp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 

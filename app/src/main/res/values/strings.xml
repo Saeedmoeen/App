@@ -33,4 +33,21 @@
     <string name="Price">قیمت :</string>
     <string name="Available">موجود</string>
     <string name="category">دسته بندی :</string>
+    <string name="home_nav">خانه</string>
+    <string name="category_nav">دسته بندی</string>
+    <string name="cart_nav">سبد خرید</string>
+    <string name="profile_nav">پروفایل</string>
+    <string name="search">جستجو</string>
+    <string name="products">لیست محصولات</string>
+    <string name="descritpion">توضیحات</string>
+    <string name="info_4">تصاویر در یک پست مفید هستند، اما مطمئن شوید که پست بدون آنها همچنان واضح است. اگر تصاویر کد یا پیام های خطا را ارسال می کنید، کد یا پیام واقعی را مستقیماً در پست کپی و جایگذاری کنید یا تایپ کنید.</string>
+    <string name="info">مشخصات</string>
+    <string name="mojodi_2">موجودی انبار 2 :</string>
+    <string name="modjodi_1">موجودی انبار 1 :</string>
+    <string name="item">کیک و کلوچه</string>
+    <string name="_300">300 بسته</string>
+    <string name="_5000">5000</string>
+    <string name="_1">1</string>
+    <string name="add_to_cart">افزودن به سبد خرید</string>
+    <string name="toman">تومان</string>
 </resources>

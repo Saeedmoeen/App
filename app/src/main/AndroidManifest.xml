@@ -17,9 +17,33 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activities.HomeActivity"
+            android:name=".ui.home.MenuActivity"
             android:exported="false"
             android:theme="@style/Splash"/>
+        <activity
+            android:name=".ui.home.DescriptionActivity"
+            android:exported="false"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:exported="false"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".ui.cart.CartActivity"
+            android:exported="false"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".ui.category.CategoryActivity"
+            android:exported="false"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:exported="false"
+            android:theme="@style/Splash" />
         <activity
             android:name=".ui.auth.SignUpActivity"
             android:exported="false"
